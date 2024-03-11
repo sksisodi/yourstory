@@ -228,6 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'X-CSRFToken': getCookie('csrftoken')
             },
             body: JSON.stringify({ prompt: prompt }),
+            credentials: 'include'
         })
         .then(response => {
         if (!response.ok) {
