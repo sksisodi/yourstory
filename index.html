@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
+.w3-sidebar {
+  z-index: 3;
+  width: 250px;
+  top: 43px;
+  bottom: 0;
+  height: inherit;
+}
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: CENTER; /* Allows for responsive stacking */
+    height: 1000;
+    width: 100%; /* Adjusts for header height */
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.dropzone, .story-column {
+    flex: 1; /* Each child will take equal width */
+    height: 350px; /* Height adjusted for padding */
+    background-color: #457b9d;
+    border: 2px dashed #ccc;
+    position: relative;
+    overflow: hidden;
+}
+.draggable {
+    width: 70px;
+    height: 70px;
+    background-color: #f1faee;
+    position: absolute;
+    cursor: move;
+    border-radius: 10px;
+}
+
+/* Initial positions for the draggable elements */
+#draggable-1 { top: 10px; left: 10px; }
+#draggable-2 { top: 10px; left: 100px; }
+#draggable-3 { top: 10px; left: 200px; }
+</style>
+</head>
+<body>
+    <!-- Navbar -->
+<div class="w3-top">
+    <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
+      <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+      <a href="#" class="w3-bar-item w3-button w3-theme-l1"></a>
+      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white"></a>
+      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white"></a>
+      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white"></a>
+      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white"></a>
+      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white"></a>
+      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white"></a>
+    </div>
+  </div>
+  <!-- Sidebar -->
+<!-- <nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left" id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
+      <i class="fa fa-remove"></i>
+    </a>
+    <h4 class="w3-bar-item"><b>Menu</b></h4>
+    <a class="w3-bar-item w3-button w3-hover-black" href="#"></a>
+    <a class="w3-bar-item w3-button w3-hover-black" href="#"></a>
+    <a class="w3-bar-item w3-button w3-hover-black" href="#"></a>
+    <a class="w3-bar-item w3-button w3-hover-black" href="#"></a>
+  </nav> -->
+
+
+  <!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
+<div class="w3-main" style="margin-left:250px">
+
+  <div class="w3-row w3-padding-16 w3-auto">
+    <div class="w3-half w3-container">
+        <h1 >Interactive Story Board</h1>
+    <main class="main-container">
+        <div id="container" class="dropzone">
+            <div id="draggable-1" class="draggable" draggable="true"><p style="font-size: 12px;text-align: center;">discovery of a mysterious object</p></div>
+            <div id="draggable-2" class="draggable" draggable="true"><p style="font-size: 12px;text-align: center;">a secret meeting</p></div>
+            <div id="draggable-3" class="draggable" draggable="true"><p style="font-size: 12px;text-align: center;">a resolution and acceptance</p></div>
+            <!-- Add more draggable items here if needed -->
+        </div>
+        </main>
+        <div class="w3-row w3-center">
+            <button id="submitBtn"  style="border-radius: 5cm; border-color: #e63946;">Submit</button>
+            <button id="resetBtn" style="border-radius: 5cm; border-color: #e63946;">Reset</button>
+        </div>
+        </div>
+       
+        <div class="w3-half w3-container">
+            <h1 >Your Story</h1>
+            <!-- The story will be dynamically inserted here -->
+            <p id="request"></p>
+            <p id="gpt_response" class="response w3-border w3-padding-large w3-padding-32 w3-center"></p>
+          </div>
+        </div>
+        <div class="w3-row">
+            <div class="w3-twothird w3-container">
+             
+        </div>
+    </main>
+    <div class="w3-third w3-container">
+        <!-- <p class="w3-border w3-padding-large w3-padding-32 w3-center"></p>
+        <p class="w3-border w3-padding-large w3-padding-64 w3-center"></p> -->
+      </div>
+    </div>
+  
+    <div class="w3-row w3-padding-64">
+      <div class="w3-twothird w3-container">
+        <h1 class="w3-text-teal"></h1>
+        <p></p>
+      </div>
+      <div class="w3-third w3-container">
+        <!-- <p class="w3-border w3-padding-large w3-padding-32 w3-center"></p>
+        <p class="w3-border w3-padding-large w3-padding-64 w3-center"></p> -->
+      </div>
+    </div>
+  
+    <!-- Pagination -->
+    <!-- <div class="w3-center w3-padding-32">
+      <div class="w3-bar">
+        <a class="w3-button w3-black" href="#">1</a>
+        <a class="w3-button w3-hover-black" href="#">2</a>
+        <a class="w3-button w3-hover-black" href="#">3</a>
+        <a class="w3-button w3-hover-black" href="#">4</a>
+        <a class="w3-button w3-hover-black" href="#">5</a>
+        <a class="w3-button w3-hover-black" href="#">»</a>
+      </div>
+    </div> -->
+  
+    <footer id="myFooter">
+      <div class="w3-container w3-theme-l2 w3-padding-16">
+        <h4>Footer</h4>
+      </div>
+  
+      <div class="w3-container w3-theme-l1">
+        <!-- <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p> -->
+      </div>
+    </footer>
+    <script src="script.js"></script>
+
+<!-- END MAIN -->
+</div>
+
+<script>
+// Get the Sidebar
+var mySidebar = document.getElementById("mySidebar");
+
+// Get the DIV with overlay effect
+var overlayBg = document.getElementById("myOverlay");
+
+// Toggle between showing and hiding the sidebar, and add overlay effect
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+    overlayBg.style.display = "none";
+  } else {
+    mySidebar.style.display = 'block';
+    overlayBg.style.display = "block";
+  }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+  mySidebar.style.display = "none";
+  overlayBg.style.display = "none";
+}
+document.addEventListener('DOMContentLoaded', () => {
+    const draggables = document.querySelectorAll('.draggable');
+    const container = document.getElementById('container');
+    const storyContent = document.getElementById('storyContent');
+    let activeDraggable = null;
+    let offsetX, offsetY;
+
+    draggables.forEach(draggable => {
+        draggable.addEventListener('dragstart', (e) => {
+            activeDraggable = draggable;
+            offsetX = e.offsetX;
+            offsetY = e.offsetY;
+        });
+    });
+
+    container.addEventListener('dragover', (e) => {
+        e.preventDefault(); // Prevent default to allow drop
+    });
+
+    container.addEventListener('drop', (e) => {
+        e.preventDefault(); // Necessary to prevent default behavior
+        if (activeDraggable) {
+            const rect = container.getBoundingClientRect();
+            activeDraggable.style.position = 'absolute';
+            activeDraggable.style.left = `${e.clientX - rect.left - offsetX}px`;
+            activeDraggable.style.top = `${e.clientY - rect.top - offsetY}px`;
+            container.appendChild(activeDraggable); // Append to container to maintain document flow
+        }
+    });
+
+    const submitBtn = document.getElementById('submitBtn');
+    const requestStatus = document.getElementById('request');
+
+    submitBtn.addEventListener('click', () => {
+        let prompt = "Following the sequence of events, write a short story in 150 words: ";
+        document.querySelectorAll('.dropzone .draggable').forEach((el, index) => {
+            prompt += `${index + 1}. ${el.textContent.trim()}, `;
+        });
+        prompt = prompt.slice(0, -2) + "."; // Finalize the prompt
+        requestStatus.textContent = 'Sending request...';
+
+        // Send the prompt to your server endpoint which interacts with the GPT API
+        fetch('http://localhost:8000/api/generate-story/', { // Update to your actual endpoint URL
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')
+            },
+            body: JSON.stringify({ prompt: prompt }),
+        })
+        .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok: ' + response.statusText);
+        }
+        return response.json()
+    })
+        .then(data => {
+            requestStatus.textContent = 'Request received.'; 
+            document.getElementById('gpt_response').textContent = data.gpt_response;
+        })
+        .catch(error => {console.error('Error:', error);
+        requestStatus.textContent = 'Error: ' + error.message;
+    });
+    });
+
+    const resetBtn = document.getElementById('resetBtn');
+    const originalPositions = {};
+
+    // Save the original positions of draggable elements
+    document.querySelectorAll('.draggable').forEach(el => {
+        originalPositions[el.id] = { left: el.style.left, top: el.style.top };
+    });
+    resetBtn.addEventListener('click', () => {
+        document.querySelectorAll('.draggable').forEach(el => {
+            const originalPosition = originalPositions[el.id];
+            el.style.left = originalPosition.left;
+            el.style.top = originalPosition.top;
+        });
+    });
+});
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+</script>
+
+</body>
+</html>

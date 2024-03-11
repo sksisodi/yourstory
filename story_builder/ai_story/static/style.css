@@ -1,0 +1,87 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #f3d9a4;
+    padding: 10px 0;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+}
+
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: CENTER; /* Allows for responsive stacking */
+    height: calc(100% - 60px); /* Adjusts for header height */
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.dropzone, .story-column {
+    flex: 1; /* Each child will take equal width */
+    height: calc(100% - 20px); /* Height adjusted for padding */
+    background-color: #f3d9a4;
+    border: 2px dashed #ccc;
+    margin: 10px;
+    position: relative;
+    overflow: hidden;
+}
+.button-container {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center; /* Center buttons horizontally */
+    justify-content: center; /* Center buttons vertically */
+    padding: 10px;
+    z-index: 2;
+}
+
+button {
+    padding: 5px 10px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+button:last-child {
+    margin-bottom: 0;
+}
+
+
+h2 {
+    color: #333;
+}
+
+.draggable {
+    width: 50px;
+    height: 50px;
+    background-color: #c084fc;
+    position: absolute;
+    cursor: move;
+    border-radius: 10px;
+}
+
+/* Initial positions for the draggable elements */
+#draggable-1 { top: 10px; left: 10px; }
+#draggable-2 { top: 10px; left: 70px; }
+#draggable-3 { top: 10px; left: 130px; }
+
+@media (max-width: 800px) {
+    .main-container {
+        flex-direction: column; /* Stack the columns on small screens */
+    }
+
+    .dropzone, .story-column {
+        max-width: 100%; /* Allow the containers to fill the screen width */
+        min-height: 300px; /* Minimum height for usability */
+        margin-bottom: 20px; /* Add space between stacked containers */
+    }
+    .button-container {
+        flex-direction: row; /* Align buttons horizontally on smaller screens */
+        justify-content: space-around; /* Space buttons evenly */
+        width: 100%;
+    }
+}
