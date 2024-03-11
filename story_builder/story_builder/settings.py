@@ -14,6 +14,9 @@ from pathlib import Path
 from dotenv import load_dotenv
 import os
 import dj_database_url
+import django_heroku
+import dj_database_url
+from decouple import config
 # dotenv_path = "backend/story_builder/.env"
 # load_dotenv(dotenv_path)
 
