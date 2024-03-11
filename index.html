@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
         requestStatus.textContent = 'Sending request...';
 
         // Send the prompt to your server endpoint which interacts with the GPT API
-        fetch('http://localhost:8000/api/generate-story/', { // Update to your actual endpoint URL
+        fetch('https://gpt-apps1-b9c4d6bfa530.herokuapp.com/', { // Update to your actual endpoint URL
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
