@@ -119,7 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 CORS_ALLOWED_ORIGINS = [
     "https://sksisodi.github.io",
-    "https://gpt-apps1-b9c4d6bfa530.herokuapp.com/",
+    "https://gpt-apps1-b9c4d6bfa530.herokuapp.com",
     "http://localhost:8000",
     "http://127.0.0.1:9000",
 ]
