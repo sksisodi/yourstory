@@ -1,1 +1,1 @@
-web: gunicorn story_builder.wsgi --log-file -
+web: gunicorn story_builder.story_builder.wsgi --log-file -
